@@ -5,9 +5,6 @@ let db = new DB;
 console.clear();
 mainPrompt();
 
-// TODO: Add new product
-
-
 function mainPrompt() {
     printWelcome();
     inquirer
@@ -43,7 +40,7 @@ function mainPrompt() {
                     break;
                 case "Add new product":
                     console.clear();
-                    addProductPrompt();
+                    db.getDepartments(addProductPrompt);
                     break;
                 case "Quit":
                     console.log("Goodbye");
@@ -105,11 +102,15 @@ function addQuantityAmountPrompt(item) {
             let updatedTotal = parseInt(item.stock_quantity) + parseInt(answers.selection);
             console.clear();
             console.log(answers.selection, "units of", item.product_name, "added to stock. New total is", updatedTotal, "\n");
-            db.updateItem(item.item_id, updatedTotal, pausePrompt);
+            db.updateItem(item.item_id, updatedTotal, item.product_sales, pausePrompt);
         });
 }
 
-function addProductPrompt() {
+function addProductPrompt(departmentsObject) {
+    let departmentArray = [];
+    for (i in departmentsObject) {
+        departmentArray.push(departmentsObject[i].department_name)
+    };
     inquirer
         .prompt([{
                 name: "product_name",
@@ -125,15 +126,9 @@ function addProductPrompt() {
             },
             {
                 name: "department_name",
-                type: "input",
+                type: "list",
                 message: "What department does this new product belong in?",
-                validate: function(input) {
-                    if (input.length === 0) {
-                        console.log(" Item needs a department!");
-                        return false;
-                    }
-                    return true;
-                }
+                choices: departmentArray
             },
             {
                 name: "price",
@@ -169,5 +164,5 @@ function addProductPrompt() {
 
 
 function printWelcome() {
-    console.log("Welcome Manager!\nPlease make a selection.\n")
+    console.log("Welcome Manager!\nPlease make a selection.\n");
 }

@@ -9,11 +9,18 @@ CREATE TABLE products (
   product_name VARCHAR(45) NOT NULL,
   department_name VARCHAR(45) NOT NULL,
   price DECIMAL(10,2) NOT NULL,
-  stock_quantity INT NOT NULL
+  stock_quantity INT NOT NULL,
+  product_sales DECIMAL(10,2)
+);
+
+CREATE TABLE departments (
+department_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+department_name VARCHAR(45) NOT NULL,
+overhead_cost DECIMAL(10,2) NOT NULL
 );
 
 INSERT INTO products (product_name, department_name, price, stock_quantity)
-VALUES ("shoes", "clothing", 3.10, 120);
+VALUES ("Shoes", "Clothing", 3.10, 120);
 
 
 
