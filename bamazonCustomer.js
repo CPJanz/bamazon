@@ -73,14 +73,26 @@ function itemQuantityPrompt(item) {
         }])
         .then(answers => {
             // Completes the purchase
-            db.purchaseItem(item[0].item_id, item[0].stock_quantity - answers.selection, function() {
+            db.updateItem(item[0].item_id, item[0].stock_quantity - answers.selection, function() {
                 console.clear();
                 console.log("Purchase Complete! We've deducted $" + (answers.selection * item[0].price).toFixed(2), "from your bank account.")
-                mainPrompt();
+                pausePrompt(mainPrompt);
             });
         });
 }
 
+function pausePrompt(inputFunction) {
+    inquirer
+        .prompt([{
+            name: "selection",
+            type: "input",
+            message: "Press any key to continue",
+        }])
+        .then(answers => {
+            inputFunction()
+        });
+}
+
 function printWelcome() {
-    console.log("Welcome Valued Customer!\n\n\n\nPlease make a selection.")
+    console.log("Welcome Valued Customer!\n\n\n\nPlease make a selection.\n")
 }
