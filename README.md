@@ -20,7 +20,7 @@ BLah bhalalal
 
 ### bamazonCustomer.js
 
-[gif](./assets/customer.gif)
+![gif](./assets/customer.gif)
 This file simulates the access a customer would have.
 
 * Purchase a product
