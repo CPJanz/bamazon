@@ -1,6 +1,6 @@
 # bamazon
 
-BLah bhalalal
+Bamazon is a command line application which simulates a store inventory system.
 
 ## Installation Instructions
 
@@ -21,9 +21,6 @@ BLah bhalalal
 ### bamazonCustomer.js
 
 ![gif](./assets/customer.gif)
-This file simulates the access a customer would have.
-
-#### Options
 
 * Purchase an item
 
@@ -33,9 +30,13 @@ This file simulates the access a customer would have.
 
 ![gif](./assets/manager.gif)
 
-#### Options
+* View products for sale
 
-* 
+* View low inventory products
+
+* Add stock to existing product
+
+* Add new product
 
 * Quit
 
@@ -43,4 +44,23 @@ This file simulates the access a customer would have.
 
 ![gif](./assets/supervisor.gif)
 
-#### Options
+* View product sales by department
+
+* Create new department
+
+* Quit
+
+## Packages used
+
+* mysql - To interact with the mysql database.
+* console.table - To make the tables better looking.
+* dotenv - To hide the mysql password.
+* inquirer - To handle user input.
+
+## Lessons Learned
+
+* I was pleased with my approach of compartmentalizing the MySql interface into a separate file which made navigating the nested asynchronous functions much easier.
+
+### Note
+
+This projecct has been added to my temporary portfolio [page](http://cpjanz.github.io/Responsive-Portfolio). If I decide that it is one that I will use for my public portfolio I will update the screenshot and add it to the new page.

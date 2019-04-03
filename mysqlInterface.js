@@ -10,7 +10,7 @@ var connection = mysql.createConnection({
 connection.connect();
 
 function Connect() {
-    /** Gets an object consisting of all items for sale.  Takes in a function and uses the query result as its parameter */
+    /** Gets an object consisting of all items for sale.  Takes in a function and uses the query result as its parameter. */
     this.getProducts = function(inputFunction) {
         connection.query("SELECT * FROM products", function(err, res) {
             if (err) throw err;
@@ -18,9 +18,17 @@ function Connect() {
         });
     }
 
+    /** Gets an object consisting of all the items with columns meant to be shown to a customer. Takes in a function and uses the query result as its parameter. */
+    this.customerGetProducts = function(inputFunction) {
+        connection.query("SELECT item_id as id, product_name as product, price, stock_quantity as quantity FROM products", function(err, res) {
+            if (err) throw err;
+            inputFunction(res);
+        });
+    }
+
     /** Gets an object consisting of all departments. Takes in a function which uses the query result as its parameter. */
     this.getDepartments = function(inputFunction) {
-        connection.query("SELECT department_id, department_name FROM departments", function(err, res) {
+        connection.query("SELECT department_name as 'Existing Departments' FROM departments", function(err, res) {
             if (err) throw err;
             inputFunction(res);
         });

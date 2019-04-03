@@ -20,7 +20,7 @@ function mainPrompt() {
             switch (answers.selection) {
                 case "Purchase an Item":
                     // Show user list of all items
-                    db.getProducts(function(input) {
+                    db.customerGetProducts(function(input) {
                         console.clear();
                         console.table(input);
                         // Prompt user to select which item they'd like to buy.
@@ -42,10 +42,10 @@ function itemIdPrompt(itemArray) {
         .prompt([{
             name: "selection",
             type: "input",
-            message: "What would you like to purchase (input an item_id):",
+            message: "What would you like to purchase (input an id):",
             validate: function(input) {
                 if (isNaN(input) || input.length === 0 || input <= 0 || input > itemArray.length) {
-                    console.log(" Invalid item_id!");
+                    console.log(" Invalid id!");
                     return false;
                 }
                 return true;
@@ -81,7 +81,7 @@ function itemQuantityPrompt(item) {
             // Completes the purchase
             db.updateItem(item[0].item_id, quantityPurchased, newProductSales, function() {
                 console.clear();
-                console.log("Purchase Complete! We've deducted $" + (totalCost).toFixed(2), "from your bank account.")
+                console.log("Purchase Complete! We've deducted $" + (totalCost).toFixed(2), "from your bank account.\n")
                 pausePrompt(mainPrompt);
             });
         });
