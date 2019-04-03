@@ -23,6 +23,24 @@ BLah bhalalal
 ![gif](./assets/customer.gif)
 This file simulates the access a customer would have.
 
-* Purchase a product
+#### Options
+
+* Purchase an item
 
 * Quit
+
+### bamazonManager.js
+
+![gif](./assets/manager.gif)
+
+#### Options
+
+* 
+
+* Quit
+
+### bamazonSupervisor.js
+
+![gif](./assets/supervisor.gif)
+
+#### Options
