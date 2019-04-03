@@ -1,11 +1,13 @@
 let inquirer = require("inquirer");
 let DB = require("./mysqlInterface");
+const cTable = require('console.table');
 let db = new DB;
 
 console.clear();
 mainPrompt();
 
 function mainPrompt() {
+    console.clear();
     printWelcome();
     inquirer
         .prompt([{
@@ -27,7 +29,11 @@ function mainPrompt() {
                     // View low inventory ( inventory_count< 5 in inventory)
                     db.getLowItems(function(input) {
                         console.clear();
-                        console.table(input);
+                        if (input.length > 0) {
+                            console.table(input);
+                        } else {
+                            console.log("No products are low inventory.");
+                        }
                         pausePrompt();
                     })
                     break;

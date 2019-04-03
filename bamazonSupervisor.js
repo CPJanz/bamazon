@@ -1,11 +1,13 @@
 let inquirer = require("inquirer");
 let DB = require("./mysqlInterface");
+const cTable = require('console.table');
 let db = new DB;
 
 console.clear();
 mainPrompt();
 
 function mainPrompt() {
+    console.clear();
     printWelcome();
     inquirer
         .prompt([{
