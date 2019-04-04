@@ -91,7 +91,7 @@ function addDepartmentPrompt(departmentArray) {
 /** Takes in a department string and departmentArray, an array of departments returned by the getDepartments function, returns a boolean based on if the department string is a dupe of an existing department_name */
 function departmentIsADupe(department, departmentArray) {
     for (i in departmentArray) {
-        if (departmentArray[i].department_name.toLowerCase() === department.toLowerCase()) {
+        if (departmentArray[i]["Existing Departments"].toLowerCase() === department.toLowerCase()) {
             return true;
         }
     }

@@ -115,7 +115,7 @@ function addQuantityAmountPrompt(item) {
 function addProductPrompt(departmentsObject) {
     let departmentArray = [];
     for (i in departmentsObject) {
-        departmentArray.push(departmentsObject[i].department_name)
+        departmentArray.push(departmentsObject[i]["Existing Departments"])
     };
     inquirer
         .prompt([{
